@@ -1,0 +1,211 @@
+fileVersion: 1
+id: "531"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |+
+    capitalized: Copy Into
+    short: COPY
+    tagColor: gray
+    plural: Copy Intos
+
+    deployStrategy: advanced
+    isColumnResyncEnabled: true
+
+    config:
+    - groupName: General Options
+      items:
+     
+      - type: materializationSelector
+        default: table
+        options:
+        - table
+        isRequired: true 
+      
+      - displayName: Truncate Before
+        attributeName: truncateBefore
+        type: toggleButton
+        default: false
+      
+      - displayName: Infer Schema 
+        attributeName: inferschema
+        type: toggleButton
+        default: false
+
+    - groupName: Source Data
+      items:
+      
+      - displayName: Path (Ex:gs://bucket/base/path )
+        attributeName: filepath
+        type: textBox
+        isRequired: true
+      
+      - displayName: Subfolder (Enter folder name in external path if applicable-folder/subfolder)
+        attributeName: subfolder
+        type: textBox
+        default: ''
+        isRequired: false
+
+      - displayName: File Name (Ex:a.csv)
+        attributeName: fileNames
+        type: textBox
+        isRequired: false
+
+      - displayName: File Pattern (Ex:*hea*.csv)
+        attributeName: filePattern
+        type: textBox
+        isRequired: false
+
+    - groupName: File Format Options
+      items:
+
+      - displayName: File Type
+        attributeName: fileType
+        type: dropdownSelector
+        default: CSV
+        options:
+        - "CSV"
+        - "PARQUET"
+        - "JSON"
+        - "AVRO"
+        - "ORC"
+        - "XML"
+        isRequired: false
+
+      - displayName: Field delimiter
+        attributeName: fieldDelim
+        type: textBox
+        enableIf: "{% if (config.fileType in ('CSV'))%} true {% else %} false {% endif %}"
+        default: ","
+        isRequired: false
+
+      - displayName: Parse header
+        attributeName: parsehdr
+        enableIf: "{% if config.fileType in ('CSV') %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
+      
+      - displayName: Multi-line
+        attributeName: mulline
+        enableIf: "{% if config.fileType in ('CSV','JSON') %} true {% else %} false {% endif %}"
+        type: toggleButton
+        default: true
+        isRequired: false   
+      
+      - displayName: singlevariantcolumn
+        attributeName: svcol
+        type: textBox
+        default: "SRC"
+        enableIf: "{% if config.fileType in ('JSON') %} true {% else %} false {% endif %}"
+        isRequired: false
+      
+      - displayName: ignoreCorruptFiles
+        attributeName: igcorfiles
+        type: toggleButton
+        isRequired: false
+
+      - displayName: ignoreMissingFiles
+        attributeName: igmisfiles
+        type: toggleButton
+        isRequired: false
+      
+      - displayName: dateformat
+        attributeName: dtformat
+        type: textBox
+        enableIf: "{% if config.fileType in ('XML','CSV','JSON') %} true {% else %} false {% endif %}"
+        isRequired: false
+      
+      - displayName: timestampformat
+        attributeName: tstmpformat
+        type: textBox
+        enableIf: "{% if config.fileType in ('XML','CSV','JSON') %} true {% else %} false {% endif %}"
+        isRequired: false
+      
+      - displayName: encoding
+        attributeName: encoding
+        default: "UTF-8"
+        type: textBox
+        enableIf: "{% if config.fileType in ('XML','CSV','JSON') %} true {% else %} false {% endif %}"
+        isRequired: false
+
+      - displayName: rowTag
+        attributeName: xmlrwTag
+        type: textBox
+        enableIf: "{% if config.fileType in ('XML') %} true {% else %} false {% endif %}"
+        isRequired: false
+      
+      - displayName: rootTag
+        attributeName: xmlrtTag
+        type: textBox
+        enableIf: "{% if config.fileType in ('XML') %} true {% else %} false {% endif %}"
+        isRequired: false
+      
+      
+    - groupName: Copy Options
+      items:
+
+      - displayName: force
+        attributeName: forceload
+        type: toggleButton
+        isRequired: false
+
+      - displayName: mergeschema
+        attributeName: mergeschema
+        type: toggleButton
+        isRequired: false
+
+    systemColumns:
+
+    - displayName: LOAD_TIMESTAMP
+      transform: 'current_timestamp()::timestamp_ntz'
+      dataType: TIMESTAMP_NTZ
+      placement: end
+      attributeName: sysLdTs
+
+    - displayName: FILENAME
+      transform: '_metadata.file_name'
+      dataType: STRING
+      placement: end
+      attributeName: sysFlNm
+
+    - displayName: FILEPATH
+      transform: '_metadata.file_path'
+      dataType: STRING
+      placement: end
+      attributeName: sysFlRwNm
+
+    - displayName: FILE_LAST_MODIFIED
+      transform: '_metadata.file_modification_time'
+      dataType: TIMESTAMP_NTZ
+      placement: end
+      attributeName: sysFlLtMd
+
+    - displayName: FILESIZE
+      transform: '_metadata.file_size'
+      dataType: BIGINT
+      placement: end
+      attributeName: sysFlsz
+
+    - displayName: FILEBLOCKSTART
+      transform: '_metadata.file_block_start'
+      dataType: BIGINT
+      placement: end
+      attributeName: sysblkstrt
+
+    - displayName: FILEBLOCKLENGTH
+      transform: '_metadata.file_block_length'
+      dataType: BIGINT
+      placement: end
+      attributeName: sysblkend
+
+
+
+
+
+
+
+
+name: Copy Into
+type: NodeType

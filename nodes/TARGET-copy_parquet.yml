@@ -1,0 +1,97 @@
+fileVersion: 1
+id: 6e5f56f0-66a7-466e-8a24-b011da2faf87
+name: copy_parquet
+operation:
+  config:
+    fieldDelim: ","
+    fileNames: shippersnew.parquet
+    filePattern: ""
+    fileType: PARQUET
+    filepat: ""
+    filepath: /Volumes/coalesce/target_de
+    forceload: true
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: false
+    mergeschema: true
+    parsehdr: true
+    subfolder: target-gcp
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 84ed922a-f6aa-4083-8e39-142346dfea6f
+          stepCounter: 6e5f56f0-66a7-466e-8a24-b011da2faf87
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: ShipperID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b04950c-b2bb-4689-91fb-ad503bf4aa80
+          stepCounter: 6e5f56f0-66a7-466e-8a24-b011da2faf87
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: CompanyName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d9e0e12-b8d2-4bfe-808f-0305ec828c42
+          stepCounter: 6e5f56f0-66a7-466e-8a24-b011da2faf87
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_parquet
+        noLinkRefs: []
+  name: copy_parquet
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node
