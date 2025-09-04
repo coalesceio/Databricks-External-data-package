@@ -1,0 +1,171 @@
+fileVersion: 1
+id: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+name: copy_csv_customer
+operation:
+  config:
+    dtformat: ""
+    encoding: UTF-8
+    fieldDelim: ","
+    fileNames: ""
+    filePattern: ""
+    fileType: CSV
+    filepath: ""
+    forceload: false
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: true
+    mergeschema: false
+    mulline: true
+    parsehdr: true
+    subfolder: ""
+    svcol: SRC
+    truncateBefore: false
+    tstmpformat: ""
+    xmlrtTag: ""
+    xmlrwTag: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3bec0580-0b99-4e15-876a-85fbf3a90f5f
+          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: current_timestamp()::timestamp_ntz
+        sysLdTs: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d705f13d-d4a5-4a8d-8815-d0e0968af659
+          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_name
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9d015901-b0fc-41f5-a4d0-23be198b3740
+          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILEPATH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_path
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 81ce3586-9785-4090-bc1b-476e1caa637d
+          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_modification_time
+        sysFlLtMd: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42010c8d-2c64-468b-b3b9-8b4c6e0f9c57
+          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+        config: {}
+        dataType: BIGINT
+        defaultValue: ""
+        description: ""
+        name: FILESIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_size
+        sysFlsz: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 62477154-1475-410b-acd4-d3b59fc4e5ea
+          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+        config: {}
+        dataType: BIGINT
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKSTART
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_block_start
+        sysblkstrt: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6ae0364c-d3f8-4c13-a1b6-2322d7e64d18
+          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+        config: {}
+        dataType: BIGINT
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKLENGTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_block_length
+        sysblkend: true
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_csv_customer
+        noLinkRefs: []
+  name: copy_csv_customer
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node

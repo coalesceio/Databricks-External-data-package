@@ -108,6 +108,8 @@ FROM (
            SELECT {% for col in sources[0].columns %}
                    {%if col.name == "FILENAME"%}
                       _metadata.file_name AS FILENAME
+                    {%elif col.name == "LOAD_TIMESTAMP"%}
+                    LOAD_TIMESTAMP AS 
                     {%elif col.name == "FILE_LAST_MODIFIED"%}
                     _metadata.file_modification_time AS FILE_LAST_MODIFIED
                     {%elif col.name == "FILESIZE"%}

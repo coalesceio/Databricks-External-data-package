@@ -30,7 +30,8 @@
 
     CREATE OR REPLACE TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
     {% if desiredState.node.description | length > 0 -%} COMMENT '{{ desiredState.node.description |escape }}'{%- endif%}
-    AS SELECT *,_metadata.file_name AS FILENAME,
+    AS SELECT *,LOAD_TIMESTAMP AS current_timestamp()::timestamp_ntz,
+    _metadata.file_name AS FILENAME,
     _metadata.file_modification_time AS FILE_LAST_MODIFIED,
     _metadata.file_size AS FILESIZE,
     _metadata.file_path AS FILEPATH,
