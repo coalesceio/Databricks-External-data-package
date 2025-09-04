@@ -26,9 +26,6 @@
         {% set _ = csv_options.append("'header' = 'false'") %}
     {% endif %}
 
-    {% if config.filePattern != "" %}
-        {% set _ = csv_options.append("pathGlobFilter = '" ~config.filePattern~ "'") %}
-    {% endif %}
     {% if config.mulline == true %}
         {% set _ = csv_options.append("'multiline' = 'true'") %}
     {% endif %}
@@ -38,10 +35,7 @@
 {%elif config.fileType == 'JSON' %}
 
     {%set json_options =[]%}
-    {% if config.filePattern != "" %}
-        {% set _ = json_options.append("pathGlobFilter = '" ~config.filePattern~ "'") %}
-    {% endif %}
-
+    
         {% set _ = json_options.append("'multiline' = 'true'") %}
         {% set format_options = format_options + json_options %} {# Concatenate the lists #}
 
@@ -65,6 +59,10 @@
 {% endif %}
 
 {%set common_opt =[] %}
+
+{% if config.filePattern != "" %}
+        {% set _ = common_opt.append("'pathGlobFilter' = '" ~config.filePattern~ "'") %}
+{% endif %}
 {%if config.ignoreCorruptFiles == true %}
        {% set _ = common_opt.append("ignoreCorruptFiles = '" ~config.ignoreCorruptFiles~ "'") %}
 {%endif%}
@@ -101,11 +99,18 @@
     {% set copy_opt = "" %}
 {% endif %}
 
-{{ stage('Full Load-Using Copy-into') }}
+
+{%if config.truncateBefore%}
+{{ stage ('Truncate table',true,"sql","create")}}
+TRUNCATE TABLE `{{ db }}`.`{{ sch }}`.`{{ node.name }}`
+{%endif%}
+
+{{ stage('Full Load-Using Copy-into',true,"sql","create") }}
 
 COPY INTO `{{ db }}`.`{{ sch }}`.`{{ node.name }}`
 FROM (
            SELECT {% for col in sources[0].columns %}
+                {% if '_rescued_data' not in col.name %}
                    {%if col.name == "FILENAME"%}
                       _metadata.file_name AS FILENAME
                     {%elif col.name == "LOAD_TIMESTAMP"%}
@@ -124,8 +129,9 @@ FROM (
                       `{{col.name}}`
                    {% else %}
                         {{col.transform}} AS `{{ col.name }}`
-                   {%endif%}
+                {%endif%}
             {%- if not loop.last -%}, {% endif %}
+            {%endif%}
             {%- endfor %}FROM '{{ns.fileloc}}')
             FILEFORMAT = {{config.fileType}}
             {{format_opt}}
