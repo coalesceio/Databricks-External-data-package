@@ -109,7 +109,7 @@ FROM (
                    {%if col.name == "FILENAME"%}
                       _metadata.file_name AS FILENAME
                     {%elif col.name == "LOAD_TIMESTAMP"%}
-                    LOAD_TIMESTAMP AS 
+                    current_timestamp() AS LOAD_TIMESTAMP
                     {%elif col.name == "FILE_LAST_MODIFIED"%}
                     _metadata.file_modification_time AS FILE_LAST_MODIFIED
                     {%elif col.name == "FILESIZE"%}

@@ -30,7 +30,7 @@
 
     CREATE OR REPLACE TABLE {{ ref_no_link(desiredState.node.location.name, desiredState.node.name) }}
     {% if desiredState.node.description | length > 0 -%} COMMENT '{{ desiredState.node.description |escape }}'{%- endif%}
-    AS SELECT *,LOAD_TIMESTAMP AS current_timestamp()::timestamp_ntz,
+    AS SELECT *,current_timestamp() AS LOAD_TIMESTAMP,
     _metadata.file_name AS FILENAME,
     _metadata.file_modification_time AS FILE_LAST_MODIFIED,
     _metadata.file_size AS FILESIZE,
@@ -38,22 +38,22 @@
     _metadata.file_block_start AS FILEBLOCKSTART,
     _metadata.file_block_length AS FILEBLOCKLENGTH
     FROM  read_files('{{ns.fileloc}}',format=>'{{desiredState.config.fileType}}'
-    {%if desiredState.config.filePattern != ""%} ,pathGlobFilter => '{{desiredState.config.filePattern}}' {%endif%}
-    {%if desiredState.config.ignoreCorruptFiles == true %}
+    {%-if desiredState.config.filePattern != ""%} ,pathGlobFilter => '{{desiredState.config.filePattern}}' {%-endif%}
+    {%-if desiredState.config.ignoreCorruptFiles == true %}
       ,ignoreCorruptFiles => '{{desiredState.config.ignoreCorruptFiles}}'
-    {%endif%}
-    {%if desiredState.config.ignoreCorruptFiles == true %}
+    {%-endif%}
+    {%-if desiredState.config.ignoreCorruptFiles == true %}
       ,ignoreMissingFiles => '{{desiredState.config.ignoreMissingFiles}}'
-    {%endif%}
-    {%if desiredState.config.fileType == 'JSON' or desiredState.config.mulline %} ,multiline => true {%endif%}
-    {%if desiredState.config.encoding != "" and desiredState.config.encoding is not none %} ,encoding => '{{desiredState.config.encoding}}'  {%endif%}
-    {%if desiredState.config.dtformat != "" %} ,dateformat => '{{desiredState.config.dtformat}}'  {%endif%}
-    {%if desiredState.config.tstmpformat != "" %} ,timestampFormat => '{{desiredState.config.tstmpformat}}'  {%endif%}
-    {%if desiredState.config.xmlrwTag !="" and desiredState.config.xmlrwTag is not none and desiredState.config.fileType == 'XML'  %} ,rowTag => '{{desiredState.config.xmlrwTag}}' {%endif%}
-    {%if desiredState.config.xmlrtTag !="" and desiredState.config.xmlrtTag is not none and desiredState.config.fileType == 'XML'%} ,rootTag => '{{desiredState.config.xmlrtTag}}'{%endif%}
-	{%if desiredState.config.fileType == 'CSV'%}
+    {%-endif%}
+    {%-if desiredState.config.fileType == 'JSON' or desiredState.config.mulline %} ,multiline => true {%-endif%}
+    {%-if desiredState.config.encoding != "" and desiredState.config.encoding is not none %} ,encoding => '{{desiredState.config.encoding}}'  {%-endif%}
+    {%-if desiredState.config.dtformat != "" %} ,dateformat => '{{desiredState.config.dtformat}}'  {%-endif%}
+    {%-if desiredState.config.tstmpformat != "" %} ,timestampFormat => '{{desiredState.config.tstmpformat}}'  {%-endif%}
+    {%-if desiredState.config.xmlrwTag !="" and desiredState.config.xmlrwTag is not none and desiredState.config.fileType == 'XML'  %} ,rowTag => '{{desiredState.config.xmlrwTag}}' {%-endif%}
+    {%-if desiredState.config.xmlrtTag !="" and desiredState.config.xmlrtTag is not none and desiredState.config.fileType == 'XML'%} ,rootTag => '{{desiredState.config.xmlrtTag}}'{%-endif%}
+	{%-if desiredState.config.fileType == 'CSV'%}
 	,delimiter=>'{{desiredState.config.fieldDelim}}'
-	,header=> {%if desiredState.config.parsehdr == true %}'true' {%else%} 'false'{%endif%}{%endif%},inferSchema => true)LIMIT 0
+	,header=> {%-if desiredState.config.parsehdr == true %}'true' {%else%} 'false'{%-endif%}{%-endif%},inferSchema => true)LIMIT 0
     
 	
 	{%else %}

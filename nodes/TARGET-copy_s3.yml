@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
-name: copy_csv_customer
+id: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
+name: copy_s3
 operation:
   config:
     dtformat: ""
@@ -9,13 +9,13 @@ operation:
     fileNames: ""
     filePattern: ""
     fileType: CSV
-    filepath: ""
+    filepath: s3://dats3://dataentrega/testing/emp.csv
     forceload: false
     igcorfiles: false
     igmisfiles: false
     inferschema: true
     mergeschema: false
-    mulline: true
+    mulline: false
     parsehdr: true
     subfolder: ""
     svcol: SRC
@@ -37,8 +37,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 3bec0580-0b99-4e15-876a-85fbf3a90f5f
-          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+          columnCounter: f71bff41-5d06-4741-a4dd-9e425abb5821
+          stepCounter: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -54,8 +54,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: d705f13d-d4a5-4a8d-8815-d0e0968af659
-          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+          columnCounter: d4a0673e-ef1e-48f1-bcb3-1d028471c0c5
+          stepCounter: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -71,8 +71,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 9d015901-b0fc-41f5-a4d0-23be198b3740
-          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+          columnCounter: 7ef15719-972f-4631-a458-73002a9f35c1
+          stepCounter: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
         config: {}
         dataType: STRING
         defaultValue: ""
@@ -88,8 +88,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 81ce3586-9785-4090-bc1b-476e1caa637d
-          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+          columnCounter: c1eeb0f8-6b18-4d16-a7d5-9c68b92cdab9
+          stepCounter: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
         config: {}
         dataType: TIMESTAMP_NTZ
         defaultValue: ""
@@ -105,8 +105,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 42010c8d-2c64-468b-b3b9-8b4c6e0f9c57
-          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+          columnCounter: e6b23ba3-4bdf-42f0-9730-2843a5cda908
+          stepCounter: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
         config: {}
         dataType: BIGINT
         defaultValue: ""
@@ -122,8 +122,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 62477154-1475-410b-acd4-d3b59fc4e5ea
-          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+          columnCounter: 85c00bd9-edab-4c7b-8577-2efa5fbf3e20
+          stepCounter: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
         config: {}
         dataType: BIGINT
         defaultValue: ""
@@ -139,8 +139,8 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: 6ae0364c-d3f8-4c13-a1b6-2322d7e64d18
-          stepCounter: 1ddd6f36-3023-4057-bf9f-d504dd5fd3c6
+          columnCounter: db1d9101-ce4f-4f0b-90f3-ac0f6259395e
+          stepCounter: 0bbf0fff-e2c0-4126-81ed-8f96306695bd
         config: {}
         dataType: BIGINT
         defaultValue: ""
@@ -160,9 +160,9 @@ operation:
         dependencies: []
         join:
           joinCondition: ""
-        name: copy_csv_customer
+        name: copy_s3
         noLinkRefs: []
-  name: copy_csv_customer
+  name: copy_s3
   overrideSQL: false
   schema: ""
   sqlType: "531"
