@@ -1,0 +1,142 @@
+# Storage Location-database and schema
+
+{% set srcSchName = node.location.name %}
+{% set db = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='database') | first %}
+{% set sch = storageLocations | selectattr('name', 'equalto', srcSchName) | map(attribute='schema') | first %}
+
+#Fully qualified File location
+
+     {%set ns = namespace(fileloc="")%}
+     {%set ns.fileloc = config.filepath %} 
+     {%if config.subfolder != "" %} {%set ns.fileloc = ns.fileloc~"/"~config.subfolder %}{%endif%}
+     {%set ns.fileloc =  ns.fileloc~"/"~config.fileNames%} 
+
+#File format options
+
+{% set format_options = [] %} {# Initialize an empty list for string parts #}
+
+{% if config.fileType == 'CSV' %}
+    {% set csv_options = [] %} {# Create a temporary list for CSV specific options #}
+
+    {% set _ = csv_options.append("'delimiter' = '" ~ config.fieldDelim ~ "'") %}
+
+    {% if config.parsehdr == true %}
+        {% set _ = csv_options.append("'header' = 'true'") %}
+    {% else %}
+        {% set _ = csv_options.append("'header' = 'false'") %}
+    {% endif %}
+
+    {% if config.mulline == true %}
+        {% set _ = csv_options.append("'multiline' = 'true'") %}
+    {% endif %}
+    {% set _ = csv_options.append("'inferSchema' = 'true'") %}
+    {% set format_options = format_options + csv_options %} {# Concatenate the lists #}
+
+{%elif config.fileType == 'JSON' %}
+
+    {%set json_options =[]%}
+    
+        {% set _ = json_options.append("'multiline' = 'true'") %}
+        {% set format_options = format_options + json_options %} {# Concatenate the lists #}
+
+{%elif config.fileType == 'XML'%}
+
+     {%set xml_options =[]%}
+    {% if config.filePattern != "" %}
+        {% set _ = xml_options.append("pathGlobFilter = '" ~config.filePattern~ "'") %}
+    {% endif %}
+
+    {% if config.xmlrwTag != "" %}
+        {% set _ = xml_options.append("'rowTag' = '" ~config.xmlrwTag~ "'") %}
+    {% endif %}
+
+    {% if config.xmlrtTag != "" %}
+        {% set _ = xml_options.append("'rootTag' = '" ~config.xmlrtTag~ "'") %}
+    {% endif %}
+
+    {% set format_options = format_options + xml_options %} {# Concatenate the lists #}
+
+{% endif %}
+
+{%set common_opt =[] %}
+
+{% if config.filePattern != "" %}
+        {% set _ = common_opt.append("'pathGlobFilter' = '" ~config.filePattern~ "'") %}
+{% endif %}
+{%if config.ignoreCorruptFiles == true %}
+       {% set _ = common_opt.append("ignoreCorruptFiles = '" ~config.ignoreCorruptFiles~ "'") %}
+{%endif%}
+{%if config.ignoreCorruptFiles == true %}
+      {% set _ = common_opt.append("ignoreMissingFiles = '" ~config.ignoreMissingFiles~ "'") %}
+{%endif%}
+{%if config.rlookup == false or config.rlookup == true%}
+       {% set _ = common_opt.append("'recursiveFileLookup' = '" ~config.rlookup~ "'") %}
+{%endif%}
+{%if config.encoding !="" and config.encoding is not none  %}
+      {% set _ = common_opt.append("'encoding' = '" ~config.encoding~ "'") %}
+{%endif%}
+
+{% set format_options = format_options + common_opt %}
+
+{% if format_options %}
+    {% set format_opt = "FORMAT_OPTIONS (" ~ format_options | join(', ') ~ ")" %}
+{% else %}
+    {% set format_opt = "" %}
+{% endif %}
+
+#Copy options
+
+{% set copy_options = [] %}
+
+{%if config.mergeschema == true%}
+      {% set _ = copy_options.append("'mergeschema' = 'true'") %}
+{%endif%}
+
+{%if config.forceload == true%}
+      {% set _ = copy_options.append("'force' = 'true'") %}
+{%endif%}
+
+{% if copy_options %}
+    {% set copy_opt = "COPY_OPTIONS (" ~ copy_options | join(', ') ~ ")" %}
+{% else %}
+    {% set copy_opt = "" %}
+{% endif %}
+
+
+{%if config.truncateBefore%}
+{{ stage ('Truncate table',true,"sql","create")}}
+TRUNCATE TABLE `{{ db }}`.`{{ sch }}`.`{{ node.name }}`
+{%endif%}
+
+{{ stage('Full Load-Using Copy-into',true,"sql","create") }}
+
+COPY INTO `{{ db }}`.`{{ sch }}`.`{{ node.name }}`
+FROM (
+           SELECT {% for col in sources[0].columns %}
+                {% if '_rescued_data' not in col.name %}
+                   {%if col.name == "FILENAME"%}
+                      _metadata.file_name AS FILENAME
+                    {%elif col.name == "LOAD_TIMESTAMP"%}
+                    current_timestamp() AS LOAD_TIMESTAMP
+                    {%elif col.name == "FILE_LAST_MODIFIED"%}
+                    _metadata.file_modification_time AS FILE_LAST_MODIFIED
+                    {%elif col.name == "FILESIZE"%}
+                     _metadata.file_size AS FILESIZE
+                    {%elif col.name == "FILEPATH"%}
+                     _metadata.file_path AS FILEPATH
+                    {%elif col.name == "FILEBLOCKSTART"%}
+                    _metadata.file_block_start AS FILEBLOCKSTART
+                    {%elif col.name == "FILEBLOCKLENGTH"%}
+                    _metadata.file_block_length AS FILEBLOCKLENGTH
+                   {% elif col.transform == ""  %}
+                      `{{col.name}}`
+                   {% else %}
+                        {{col.transform}} AS `{{ col.name }}`
+                {%endif%}
+            {%- if not loop.last -%}, {% endif %}
+            {%endif%}
+            {%- endfor %}FROM '{{ns.fileloc}}')
+            FILEFORMAT = {{config.fileType}}
+            {{format_opt}}
+            {{copy_opt }}
+
