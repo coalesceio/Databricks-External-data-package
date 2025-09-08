@@ -72,6 +72,9 @@
 {%if config.encoding !="" and config.encoding is not none  %}
       {% set _ = common_opt.append("'encoding' = '" ~config.encoding~ "'") %}
 {%endif%}
+{%if config.fileType == 'ORC'  %}
+     {% set _ = common_opt.append("'schemaEvolutionMode' = 'None'") %}
+{%endif%}
 
 {% set format_options = format_options + common_opt %}
 
@@ -136,4 +139,3 @@ FROM (
             FILEFORMAT = {{config.fileType}}
             {{format_opt}}
             {{copy_opt }}
-

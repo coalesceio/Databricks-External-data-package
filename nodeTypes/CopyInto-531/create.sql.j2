@@ -53,7 +53,7 @@
     {%-if desiredState.config.xmlrtTag !="" and desiredState.config.xmlrtTag is not none and desiredState.config.fileType == 'XML'%} ,rootTag => '{{desiredState.config.xmlrtTag}}'{%-endif%}
 	{%-if desiredState.config.fileType == 'CSV'%}
 	,delimiter=>'{{desiredState.config.fieldDelim}}'
-	,header=> {%-if desiredState.config.parsehdr == true %}'true' {%else%} 'false'{%-endif%}{%-endif%},inferSchema => true)LIMIT 0
+	,header=> {%-if desiredState.config.parsehdr == true %}'true' {%else%} 'false'{%-endif%}{%-endif%}{%-if desiredState.config.fileType == 'ORC' %} ,schemaEvolutionMode => 'none'{%else%} ,inferSchema => true{%-endif%})LIMIT 0
     
 	
 	{%else %}
