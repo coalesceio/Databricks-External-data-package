@@ -1,0 +1,240 @@
+fileVersion: 1
+id: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+name: copy_s3_parquet
+operation:
+  config:
+    dtformat: ""
+    encoding: UTF-8
+    fieldDelim: ","
+    fileNames: ""
+    filePattern: shippers.parquet
+    fileType: PARQUET
+    filepath: /Volumes/coalesce_aws_dbx/dlt-testing/ext-vol
+    forceload: true
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: false
+    mergeschema: true
+    mulline: true
+    parsehdr: true
+    rlookup: true
+    subfolder: ""
+    svcol: SRC
+    truncateBefore: false
+    tstmpformat: ""
+    xmlrtTag: ""
+    xmlrwTag: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b69f1a21-7a03-4855-8d0d-d361c4b76550
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_name
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1ae28758-75f0-4967-a291-10afbf24c399
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILEPATH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_path
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d7082474-d7a4-4090-a768-dbe776c33065
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: ShipperID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 39da8851-21c5-4eba-8515-112267804354
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: CompanyName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bef6c573-e7af-45cc-867c-830a90432b2e
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Phone
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0219851-59ab-4c29-9f3e-0a785f51189c
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1ddc88b9-fc01-4366-8e34-5bda9b816a26
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8e4eb2f2-ae76-45df-b019-07412215b0c6
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a5e7f030-1d8c-444a-bf55-94b4baf25158
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILESIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 103f04e1-8747-4847-a28f-c16320c5f0bb
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKSTART
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7b5c9a0d-1ad0-497c-85b3-9e113ffbbbf6
+          stepCounter: 8b8d2040-bf44-4fea-813f-7f9c1bef35b8
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKLENGTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_s3_parquet
+        noLinkRefs: []
+  name: copy_s3_parquet
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node

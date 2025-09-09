@@ -1,0 +1,307 @@
+fileVersion: 1
+id: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+name: copy_xml_1
+operation:
+  config:
+    dtformat: ""
+    encoding: UTF-8
+    fieldDelim: ","
+    fileNames: ""
+    filePattern: ""
+    fileType: XML
+    filepath: s3://dataentrega/testing/books.xml
+    forceload: false
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: false
+    mergeschema: false
+    mulline: false
+    parsehdr: false
+    subfolder: ""
+    svcol: SRC
+    truncateBefore: true
+    tstmpformat: ""
+    xmlrtTag: catalog
+    xmlrwTag: book
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a7481b7-dfc8-4b7c-a652-741c404d6b3d
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_name
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca555671-9e54-4752-a0d3-e629685f4967
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILEPATH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_path
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 81ed9233-5f9c-4931-ad87-292c028c77e5
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _id
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e3206ee-bd90-4269-8176-a9edde9b592f
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: author
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 376a25ca-03b2-4e20-92d9-86854d021a28
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: description
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 68f6b938-facd-43b8-b06b-b49619b8d501
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: genre
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 05b82274-8388-4503-a791-ca9febd00522
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: DOUBLE
+        defaultValue: ""
+        description: ""
+        name: price
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b8667adf-11b8-40e1-ad70-2f3a1e77f3a2
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: publish_date
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 09493364-67ca-4f3d-8e43-057c4cb95843
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: title
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 01f181ec-3008-4f95-ae6c-ed5ae1a080a1
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9cbf40cd-a976-41dc-98b4-f5f2cd6f806d
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e7c6aed-ea50-40b9-8a60-3ebcf54d4a68
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 587bf3b9-e3b3-46fe-b827-0b48ccdc86ec
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILESIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 567149d1-f379-47bb-973a-e7fe292b8758
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKSTART
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad0fe3a3-e9ff-4a09-a814-b5b2b8a2e9c9
+          stepCounter: 5b11f5f9-8d17-407b-b456-a3fc02ae9262
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKLENGTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_xml_1
+        noLinkRefs: []
+  name: copy_xml_1
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node

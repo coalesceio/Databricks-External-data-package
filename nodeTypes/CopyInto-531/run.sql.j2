@@ -37,6 +37,7 @@
     {%set json_options =[]%}
     
         {% set _ = json_options.append("'multiline' = 'true'") %}
+        {}
         {% set format_options = format_options + json_options %} {# Concatenate the lists #}
 
 {%elif config.fileType == 'XML'%}
@@ -69,11 +70,11 @@
 {%if config.ignoreCorruptFiles == true %}
       {% set _ = common_opt.append("ignoreMissingFiles = '" ~config.ignoreMissingFiles~ "'") %}
 {%endif%}
-{%if config.rlookup == false or config.rlookup == true%}
-       {% set _ = common_opt.append("'recursiveFileLookup' = '" ~config.rlookup~ "'") %}
-{%endif%}
 {%if config.encoding !="" and config.encoding is not none  %}
       {% set _ = common_opt.append("'encoding' = '" ~config.encoding~ "'") %}
+{%endif%}
+{%if config.fileType == 'ORC'  %}
+     {% set _ = common_opt.append("'schemaEvolutionMode' = 'None'") %}
 {%endif%}
 
 {% set format_options = format_options + common_opt %}
@@ -139,4 +140,3 @@ FROM (
             FILEFORMAT = {{config.fileType}}
             {{format_opt}}
             {{copy_opt }}
-

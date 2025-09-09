@@ -101,12 +101,6 @@ metadata:
         enableIf: "{% if config.fileType in ('JSON') %} true {% else %} false {% endif %}"
         isRequired: false
       
-      - displayName: recursiveFileLookup
-        attributeName: rlookup
-        type: toggleButton
-        default: true
-        isRequired: false
-        
       - displayName: ignoreCorruptFiles
         attributeName: igcorfiles
         type: toggleButton
