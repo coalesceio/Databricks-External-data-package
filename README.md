@@ -86,9 +86,6 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 <h3 id="copy-into-file-format"> CopyInto - File Format </h3>
 
-**File format definition-File format name**
-
-![Copy-Into format](https://github.com/user-attachments/assets/9e4e8f7e-29be-4209-a08b-cb19fadccf05)
 
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
 
