@@ -1,0 +1,239 @@
+fileVersion: 1
+id: 2ce34140-9c96-4406-9d96-61695e7283f1
+name: copy_avro_internal
+operation:
+  config:
+    dtformat: ""
+    encoding: UTF-8
+    fieldDelim: ","
+    fileNames: twitter.avro
+    filePattern: ""
+    fileType: AVRO
+    filepath: /Volumes/coalesce/target_de
+    forceload: false
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: false
+    mergeschema: false
+    mulline: true
+    parsehdr: true
+    subfolder: target-gcp
+    svcol: SRC
+    truncateBefore: false
+    tstmpformat: ""
+    xmlrtTag: ""
+    xmlrwTag: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d70e433-44ec-4217-a8b1-5cd76b514355
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_name
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a782f8d9-ce50-4438-a47d-914d03cc4f32
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILEPATH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_path
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f443d82-5769-4c7e-814c-42cdb063055c
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: username
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ffc2d090-057b-437d-9c37-4bdeab431887
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: tweet
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: de0e0074-e3aa-41c8-a0c8-01f708bd8d54
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: timestamp
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f43fc11b-8158-4fbe-9cfa-676e52d131a4
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: _rescued_data
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f41b636b-b4a5-4785-98cf-168676433ee6
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 592c1c4a-82f0-4bc2-b0e6-20e96a057ef0
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 23d36052-4a1f-46c6-ba2e-55b3add567d8
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILESIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f2226c29-1022-4854-aa50-6f2846e1d087
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKSTART
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 511a6fe9-fa11-4b63-8410-5e75bc6dc429
+          stepCounter: 2ce34140-9c96-4406-9d96-61695e7283f1
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKLENGTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_avro_internal
+        noLinkRefs: []
+  name: copy_avro_internal
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node

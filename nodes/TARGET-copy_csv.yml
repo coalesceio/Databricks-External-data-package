@@ -1,0 +1,220 @@
+fileVersion: 1
+id: b5680d79-7502-43dc-bc5b-85f993974e05
+name: copy_csv
+operation:
+  config:
+    fieldDelim: "|"
+    fileNames: ""
+    filePattern: ""
+    fileType: CSV
+    filepat: ""
+    filepath: /Volumes/coalesce/target_de/target-gcp/baby.csv
+    forceload: ""
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: false
+    parsehdr: true
+    subfolder: ""
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ca69bc78-cf11-4e56-a168-2bf8653119fe
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: Year
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a5b4b5da-419f-4cc2-9709-84e8431a8741
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FirstName
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3537124e-6100-456e-88e5-498862df29f3
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: County
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 13bca20d-56a3-4bda-ae81-46f3a242486b
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: Sex
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 59893e19-0095-490c-9010-0f009ee08c40
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: Count
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ceea95ac-0907-4237-89f1-03163e66ec1d
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: _metadata.file_name
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: ee0f9c28-e66f-4d30-9356-1329dc544b06
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: _metadata.file_modification_time
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 07a0c2a7-6ebc-4aae-90af-92c43bae6929
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: current_timestamp()
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 766ebf22-cc86-4d82-b1a6-8c412a6bf67c
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILEPATH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: _metadata.file_path
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c070b184-c738-4abe-9a8b-3344b68c07c6
+          stepCounter: b5680d79-7502-43dc-bc5b-85f993974e05
+        config: {}
+        dataType: BIGINT
+        defaultValue: ""
+        description: ""
+        name: FILESIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: _metadata.file_size
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_csv
+        noLinkRefs: []
+  name: copy_csv
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node

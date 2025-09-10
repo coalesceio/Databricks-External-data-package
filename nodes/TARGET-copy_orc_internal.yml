@@ -1,0 +1,205 @@
+fileVersion: 1
+id: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+name: copy_orc_internal
+operation:
+  config:
+    dtformat: ""
+    encoding: UTF-8
+    fieldDelim: ","
+    fileNames: snappy.orc
+    filePattern: ""
+    fileType: ORC
+    filepath: /Volumes/coalesce/target_de
+    forceload: false
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: false
+    mergeschema: false
+    mulline: true
+    parsehdr: true
+    subfolder: target-gcp
+    svcol: SRC
+    truncateBefore: false
+    tstmpformat: ""
+    xmlrtTag: ""
+    xmlrwTag: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0479983-ea99-44dc-acab-036ff0e071cc
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_name
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8838a121-8cf8-4158-abd9-f7b778c5a629
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILEPATH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_path
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4075a88e-2916-419e-bc51-4c3a3484b7ce
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b598229-12ec-412c-8b02-bfa6ea1f44c0
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: age
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97c3e049-ee9a-4203-b280-a4311b83b1ae
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 982aa1ab-c7c0-4020-9500-c77d78a0c37b
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d652bf1b-45f8-4635-b1f8-0a293a271500
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILESIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bfe334b9-d139-4a66-a40d-e1831bfa33a1
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKSTART
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 06f1c119-972d-46b9-9ed5-cd5b92826221
+          stepCounter: 581f1a65-5da4-4c2b-9889-12833e6fc5ce
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKLENGTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_orc_internal
+        noLinkRefs: []
+  name: copy_orc_internal
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node
