@@ -64,16 +64,6 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **TruncateBefore(Disabled when Inferschema is true)** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
 | **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
       
-<h3 id="copy-into-file-location">  CopyInto - Source Data </h3>
-
-**InferSchema-true**
-
-![image](https://github.com/user-attachments/assets/2f549fe3-648f-4132-bcdf-2ab92f6554bd)
-
-**InferSchema-false**
-
-![image](https://github.com/user-attachments/assets/c1071dff-da18-45fc-9e43-1dd5cdd03329)
-
 ##### Internal or External Stage
 
 | **Setting** | **Description** |
