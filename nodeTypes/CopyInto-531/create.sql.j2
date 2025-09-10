@@ -46,6 +46,7 @@
       ,ignoreMissingFiles => '{{desiredState.config.ignoreMissingFiles}}'
     {%-endif%}
     {%-if desiredState.config.fileType == 'JSON' or desiredState.config.mulline %} ,multiline => true {%-endif%}
+    {%-if desiredState.config.fileType == 'JSON' and desiredState.config.svcol %} ,singlevariantcolumn => '{{desiredState.config.svcol}}' {%-endif%}
     {%-if desiredState.config.encoding != "" and desiredState.config.encoding is not none %} ,encoding => '{{desiredState.config.encoding}}'  {%-endif%}
     {%-if desiredState.config.dtformat != "" %} ,dateformat => '{{desiredState.config.dtformat}}'  {%-endif%}
     {%-if desiredState.config.tstmpformat != "" %} ,timestampFormat => '{{desiredState.config.tstmpformat}}'  {%-endif%}

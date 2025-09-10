@@ -19,7 +19,7 @@
     {% set csv_options = [] %} {# Create a temporary list for CSV specific options #}
 
     {% set _ = csv_options.append("'delimiter' = '" ~ config.fieldDelim ~ "'") %}
-
+    {% set _ = csv_options.append("'inferSchema' = 'true'") %}
     {% if config.parsehdr == true %}
         {% set _ = csv_options.append("'header' = 'true'") %}
     {% else %}
@@ -29,7 +29,14 @@
     {% if config.mulline == true %}
         {% set _ = csv_options.append("'multiline' = 'true'") %}
     {% endif %}
-    {% set _ = csv_options.append("'inferSchema' = 'true'") %}
+    
+    {%-if config.dtformat != "" %} 
+       {% set _ = csv_options.append("'dateformat' = '"~config.dtformat ~"'")  %}
+     {%-endif%}
+    {%-if config.tstmpformat != "" %} 
+       {% set _ = csv_options.append("'tstmpformat' = '"~config.tstmpformat~"'")  %}
+    {%-endif%}
+
     {% set format_options = format_options + csv_options %} {# Concatenate the lists #}
 
 {%elif config.fileType == 'JSON' %}
@@ -37,6 +44,17 @@
     {%set json_options =[]%}
     
         {% set _ = json_options.append("'multiline' = 'true'") %}
+        {%if config.svcol != '' %}
+           {%set _ = json_options.append("'singlevariantcolumn' = '{{config.svcol}}'") %}
+        {%endif%}
+        
+    {%-if config.dtformat != "" %} 
+       {% set _ = json_options.append("'dateformat' = '"~config.dtformat~"'")  %}
+     {%-endif%}
+    {%-if config.tstmpformat != "" %} 
+       {% set _ = json_options.append("'tstmpformat' = '"~config.tstmpformat~"'")  %}
+    {%-endif%}
+
         {% set format_options = format_options + json_options %} {# Concatenate the lists #}
 
 {%elif config.fileType == 'XML'%}
@@ -53,6 +71,15 @@
     {% if config.xmlrtTag != "" %}
         {% set _ = xml_options.append("'rootTag' = '" ~config.xmlrtTag~ "'") %}
     {% endif %}
+
+    
+    {%-if config.dtformat != "" %} 
+       {% set _ = xml_options.append("'dateformat' = '"~config.dtformat~"'")  %}
+     {%-endif%}
+
+    {%-if config.tstmpformat != "" %} 
+       {% set _ = xml_options.append("'tstmpformat' = '"~config.tstmpformat~"'")  %}
+    {%-endif%}
 
     {% set format_options = format_options + xml_options %} {# Concatenate the lists #}
 
