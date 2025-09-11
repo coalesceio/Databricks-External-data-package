@@ -128,3 +128,12 @@ If the nodes are redeployed with no changes compared to previous deployment,then
 If the CopyInto node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
 * **Drop table**: Target table in Snowflake is dropped
+
+### Code
+
+### CopyInto
+
+* [Node definition](https://github.com/coalesceio/Databricks-External-data-package/blob/main/nodeTypes/CopyInto-531/definition.yml)
+* [Create Template](https://github.com/coalesceio/Databricks-External-data-package/blob/main/nodeTypes/CopyInto-531/create.sql.j2)
+* [Run Template](https://github.com/coalesceio/Databricks-External-data-package/blob/main/nodeTypes/CopyInto-531/run.sql.j2)
+
