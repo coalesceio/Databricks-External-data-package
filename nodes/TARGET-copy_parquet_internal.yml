@@ -19,7 +19,7 @@ operation:
     parsehdr: true
     subfolder: ""
     svcol: SRC
-    truncateBefore: false
+    truncateBefore: true
     tstmpformat: ""
     xmlrtTag: ""
     xmlrwTag: ""
