@@ -60,9 +60,7 @@
 {%elif config.fileType == 'XML'%}
 
      {%set xml_options =[]%}
-    {% if config.filePattern != "" %}
-        {% set _ = xml_options.append("pathGlobFilter = '" ~config.filePattern~ "'") %}
-    {% endif %}
+
 
     {% if config.xmlrwTag != "" %}
         {% set _ = xml_options.append("'rowTag' = '" ~config.xmlrwTag~ "'") %}
@@ -87,9 +85,6 @@
 
 {%set common_opt =[] %}
 
-{% if config.filePattern != "" %}
-        {% set _ = common_opt.append("'pathGlobFilter' = '" ~config.filePattern~ "'") %}
-{% endif %}
 {%if config.ignoreCorruptFiles == true %}
        {% set _ = common_opt.append("ignoreCorruptFiles = '" ~config.ignoreCorruptFiles~ "'") %}
 {%endif%}
@@ -119,7 +114,7 @@
       {% set _ = copy_options.append("'mergeschema' = 'true'") %}
 {%endif%}
 
-{%if config.forceload == true%}
+{%if config.forceload == true or config.truncateBefore  == true %}
       {% set _ = copy_options.append("'force' = 'true'") %}
 {%endif%}
 
@@ -139,7 +134,8 @@ TRUNCATE TABLE `{{ db }}`.`{{ sch }}`.`{{ node.name }}`
 
 COPY INTO `{{ db }}`.`{{ sch }}`.`{{ node.name }}`
 FROM (
-           SELECT {% for col in sources[0].columns %}
+           SELECT 
+            {% for col in sources[0].columns %}
                 {% if '_rescued_data' not in col.name %}
                    {%if col.name == "FILENAME"%}
                       _metadata.file_name AS FILENAME
@@ -160,9 +156,12 @@ FROM (
                    {% else %}
                         {{col.transform}} AS `{{ col.name }}`
                 {%endif%}
-            {%- if not loop.last -%}, {% endif %}
-            {%endif%}
-            {%- endfor %}FROM '{{ns.fileloc}}')
+                {%- if not loop.last -%}, {% endif %}
+              {%endif%}
+            {%- endfor %}FROM '{{ns.fileloc}}' )
             FILEFORMAT = {{config.fileType}}
+            {% if config.filePattern != "" %}
+                  PATTERN = '{{config.filePattern}}'
+            {%- endif %}
             {{format_opt}}
             {{copy_opt }}
