@@ -75,6 +75,18 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 <h3 id="copy-into-file-format"> CopyInto - File Format Options </h3>
 
+| **Setting** | **Description** |
+|---------|-------------|
+|**File Format Values**|Provides file format options for the File Type chosen|
+|**File Type**|Each file type has different configurations available|
+|**GENERIC(ALL FILE TYPES)**|<br/>**ignorecorruptFiles**-Whether to ignore corrupt files.<br/>**ignoremissingfiles**-Boolean whether to ignore missing files.|
+|**CSV**|**Record delimiter**-Characters that separate records in an input file<br/>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file<br/>**Parse Header(InferSchema-true)**-Boolean that specifies whether to use the first row headers in the data files to determine column names.<br/>**Encoding**- Specifies the character set of the source data when loading data into a table <br/>**Date format**- String that defines the format of date values in the data files to be loaded. <br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded.<br/>**Multi-line**-Whether the CSV records span multiple lines.|
+|**JSON**|**Date format**- String that defines the format of date values in the data files to be loaded.<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded<br/>**Multi-line**-Whether the CSV records span multiple lines.<br/>**Encoding**- Specifies the character set of the source data when loading data into a table|
+|**XML**|**Date format**- String that defines the format of date values in the data files to be loaded.
+<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded
+<br/>**Multi-line**-Whether the CSV records span multiple lines.<br/>**rowTag**-The row tag of the XML files to treat as a row. In the example XML <books> <book><book>...<books>, the appropriate value is book. This is a required option for xml.
+<br/>**rootTag**-Root tag of the XML files. For example, in <books> <book><book>...</books>, the appropriate value is books.<br/>**Encoding**- Specifies the character set of the source data when loading data into a table|
+
 
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
 
