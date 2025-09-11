@@ -68,56 +68,41 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 | **Setting** | **Description** |
 |---------|-------------|
-| **Coalesce Storage Location of Stage** | A storage location in Coalesce where the stage is located.|
-| **Stage Name (Required)** | Internal or External stage where the files containing data to be loaded are staged|
-| **File Name(s)(Ex:a.csv,b.csv)** | Specifies a list of one or more files names (separated by commas) to be loaded |
+| **Path (Ex:gs://bucket/base/path )** | A path can be an internal volume,external volume in databricks or an external location pointing to S3 bucket/gcp container .|
+| **File Name(Ex:a.csv,b.csv)** | Specifies a files name to be loaded.**Note:** It is advised to add either the filename or file pattern file loads |
 | **Path or subfolder** | Not mandatory.Specifies the path or subfolders inside the stage where the file is located.Ensure that '/' is not pre-fixed before or after the subfolder name|
-| **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match |
+| **File Pattern (Ex:'.*hea.*[.]csv')**| A regular expression pattern string, enclosed in single quotes, specifying the file names or paths to match.**Note:** It is advised to add either the filename or file pattern file loads |
 
-<h3 id="copy-into-file-format"> CopyInto - File Format </h3>
+<h3 id="copy-into-file-format"> CopyInto - File Format Options </h3>
 
 
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
 
 | **Setting** | **Description** |
 |-------------|-----------------|
-|**Enforce Length**|-Boolean that specifies whether to truncate text strings that exceed the target column length|
-|**Truncate Columns**|-Boolean that specifies whether to truncate text strings that exceed the target column length|
+|**Force**|- Boolean, default false. If set to true, idempotency is disabled and files are loaded regardless of whether they've been loaded before.|
+|**Mergeschema**|-Boolean, default false. If set to true, the schema can be evolved according to the incoming data.|
 
 ### CopyInto - System Columns
 
 The set of columns which has source data and file metadata information.
 
-* **SRC** - The data from the file is loaded into this variant column.
 * **LOAD_TIMESTAMP** - Current timestamp when the file gets loaded.
-* **FILENAME** - Name of the staged data file the current row belongs to. Includes the full path to the data file.
-* **FILE_ROW_NUMBER** - Row number for each record in the staged data file.
-* **FILE_LAST_MODIFIED** - Last modified timestamp of the staged data file the current row belongs to
-* **SCAN_TIME** - Start timestamp of operation for each record in the staged data file. Returned as TIMESTAMP_LTZ.
+* **FILENAME** - Name of the file the current row belongs to. 
+* **FILEPATH** - Full path of the file in storage
+* **FILEBLOCKSTART** - Start offset of the file split being read
+* **FILEBLOCKEND** - Length of the file split being read
+* **FILESIZE** - Size of the file in bytes
+* **FILE_LAST_MODIFIED** - Last modified timestamp of the file
 
 ### CopyInto Deployment
-
-#### CopyInto Deployment Parameters
-
-The CopyInto node typeincludes an environment parameter that allows you to specify if you want to perform a full load or a reload based on the load type when you are performing a Copy-Into operation.
-
-The parameter name is `loadType` and the default value is ``.
-
-```json
-{
-    "loadType": ""
-}
-```
-
-When the parameter value is set to `Reload`, the data is reloaded into the table regardless of whether they’ve been loaded previously and have not changed since they were loaded.As a alternate option we can use TruncateBefore option in node config
 
 #### CopyInto Initial Deployment
 When deployed for the first time into an environment the Copy-into node of materialization type table will execute the below stage:
 
-| Deployment Behavior  | Load Type | Stages Executed |
-|--|--|--|
-| Initial Deployment | ``|Create Table/Transient Table
-| Initial Deployment | Reload|Create Table/Transient Table
+| Deployment Behavior | Stages Executed |
+|--|--|
+| Initial Deployment |Create Table|
 
 ### CopyInto Redeployment
 
@@ -129,13 +114,6 @@ The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column | Edit table description**: Alter table statement is executed to perform the alter operation.
 
-#### Copy-Into change in materialization type
-
-When the materialization type of Copy-Into node is changed from table to transient table or viceversa,the below stages are executed:
-
-* **Drop table/transient table**
-* **Create transient table/table**
-* 
 ### Redeployment with no changes 
 
 If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
@@ -144,4 +122,4 @@ If the nodes are redeployed with no changes compared to previous deployment,then
 
 If the CopyInto node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
 
-* **Drop table/transient table**: Target table in Snowflake is dropped
+* **Drop table**: Target table in Snowflake is dropped
