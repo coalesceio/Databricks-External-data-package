@@ -50,21 +50,15 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 
 <h3 id="copy-into-general-options">  CopyInto - General Options </h3>
 
-**InferSchema-True**
-
-![CopyInto](https://github.com/user-attachments/assets/a537faac-bb91-4a00-b055-4612934d95b9)
-
-**InferSchema-False**
-
-![Copy-Into](https://github.com/user-attachments/assets/60b01ca8-2b99-46ec-8e5c-1491266f2333)
+![Dbx-Copy-Into](https://github.com/user-attachments/assets/60b01ca8-2b99-46ec-8e5c-1491266f2333)
 
 | **Option** | **Description** |
 |------------|----------------|
-| **Create As** | Select from the options to create as Table or Transient Table<br/>- **Transient table**<br/>  -**Table** |
-| **TruncateBefore(Disabled when Inferschema is true)** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
+| **Create As** | Select from the options to create as Table <br/>  -**Table** |
+| **TruncateBefore** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
 | **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
       
-##### Internal or External Stage
+##### Source data
 
 | **Setting** | **Description** |
 |---------|-------------|
@@ -76,9 +70,9 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 <h3 id="copy-into-file-format"> CopyInto - File Format Options </h3>
 
 | **Setting** | **Description** |
-|---------|-------------|
+|-------------|-----------------|
 |**File Format Values**|Provides file format options for the File Type chosen|
-|**File Type**|Each file type has different configurations available|
+|**File Type**|Each file type has different configurations available.File types supported-CSV,JSON,XML,ORC,AVRO,PARQUET |
 |**GENERIC(ALL FILE TYPES)**|<br/>**ignorecorruptFiles**-Whether to ignore corrupt files.<br/>**ignoremissingfiles**-Boolean whether to ignore missing files.|
 |**CSV**|**Record delimiter**-Characters that separate records in an input file<br/>**Field delimiter**- One or more singlebyte or multibyte characters that separate fields in an input file<br/>**Parse Header(InferSchema-true)**-Boolean that specifies whether to use the first row headers in the data files to determine column names.<br/>**Encoding**- Specifies the character set of the source data when loading data into a table <br/>**Date format**- String that defines the format of date values in the data files to be loaded. <br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded.<br/>**Multi-line**-Whether the CSV records span multiple lines.|
 |**JSON**|**Date format**- String that defines the format of date values in the data files to be loaded.<br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded<br/>**Multi-line**-Whether the CSV records span multiple lines.<br/>**Encoding**- Specifies the character set of the source data when loading data into a table|
@@ -86,7 +80,6 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 <br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded
 <br/>**Multi-line**-Whether the CSV records span multiple lines.<br/>**rowTag**-The row tag of the XML files to treat as a row. In the example XML <books> <book><book>...<books>, the appropriate value is book. This is a required option for xml.
 <br/>**rootTag**-Root tag of the XML files. For example, in <books> <book><book>...</books>, the appropriate value is books.<br/>**Encoding**- Specifies the character set of the source data when loading data into a table|
-
 
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
 
