@@ -139,23 +139,6 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a56031f8-cda7-4806-8c3a-7ba890fe08ff
-          stepCounter: ebfdbc4a-4d99-42cf-95ef-2061417cd7ae
-        config: {}
-        dataType: TIMESTAMP
-        defaultValue: ""
-        description: ""
-        name: LOAD_TIMESTAMP
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences: []
-            transform: ""
-        transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
-        columnReference:
           columnCounter: 18828e9c-8678-41ca-a6fe-eae75c352c4d
           stepCounter: ebfdbc4a-4d99-42cf-95ef-2061417cd7ae
         config: {}
