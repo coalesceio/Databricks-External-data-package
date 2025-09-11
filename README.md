@@ -14,7 +14,7 @@ The Copy-Into node type the following configurations available:
 * [Node Properties](#copy-into-node-properties)
 * [General Options](#copy-into-general-options)
 * [Source Data](#copy-into-file-location)
-* [File Format OPtions](#copy-into-file-format)
+* [File Format Options](#copy-into-file-format)
 * [Copy Options](#copy-into-copy-options)
 
 <h3 id="copy-into-node-properties">CopyInto - Node Properties</h3>
