@@ -48,11 +48,11 @@
     {%-if desiredState.config.fileType == 'JSON' or desiredState.config.mulline %} ,multiline => true {%-endif%}
     {%-if desiredState.config.fileType == 'JSON' and desiredState.config.svcol %} ,singlevariantcolumn => '{{desiredState.config.svcol}}' {%-endif%}
     {%-if desiredState.config.headerrows !="" and desiredState.config.headerrows is not none and desiredState.config.fileType == 'EXCEL'  %} 
-     ,headerRows => '{{desiredState.config.headerrows}}' {%-endif%}
+     ,headerRows => {{desiredState.config.headerrows}} {%-endif%}
    {%-if desiredState.config.dataaddress !="" and desiredState.config.dataaddress is not none and desiredState.config.fileType == 'EXCEL'  %} 
-     ,dataAddress => '{{desiredState.config.dataaddress}}' {%-endif%}
-   {%-if desiredState.config.infercolumntypes is not none and desiredState.config.fileType == 'EXCEL'  %} 
-     ,inferSchema => '{{desiredState.config.infercolumntypes}}' {%-endif%}
+     ,dataAddress => "{{desiredState.config.dataaddress}}" {%-endif%}
+    {%-if desiredState.config.fileType == 'EXCEL'  %} 
+     ,schemaEvolutionMode => "none" {%-endif%}
     {%-if desiredState.config.encoding != "" and desiredState.config.encoding is not none %} ,encoding => '{{desiredState.config.encoding}}'  {%-endif%}
     {%-if desiredState.config.dtformat != "" %} ,dateformat => '{{desiredState.config.dtformat}}'  {%-endif%}
     {%-if desiredState.config.tstmpformat != "" %} ,timestampFormat => '{{desiredState.config.tstmpformat}}'  {%-endif%}
