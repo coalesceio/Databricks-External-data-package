@@ -1,0 +1,258 @@
+fileVersion: 1
+id: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+name: copy_student_xls
+operation:
+  config:
+    dataaddress: "\"'student_performance'!A1:E9\""
+    dtformat: ""
+    encoding: UTF-8
+    fieldDelim: ","
+    fileNames: student_performance_sample.xlsx
+    filePattern: ""
+    fileType: EXCEL
+    filepath: /Volumes/coalesce/target_de
+    forceload: false
+    headerrows: "1"
+    igcorfiles: false
+    igmisfiles: false
+    inferschema: true
+    mergeschema: false
+    mulline: true
+    parsehdr: true
+    subfolder: target-gcp
+    svcol: SRC
+    truncateBefore: false
+    tstmpformat: ""
+    xmlrtTag: ""
+    xmlrwTag: ""
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TARGET
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c329a194-e056-494a-ae0b-9045b0970174
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILENAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_name
+        sysFlNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 08af28b6-ff0f-4c24-8880-31b40f094dc4
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: FILEPATH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: _metadata.file_path
+        sysFlRwNm: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4ee303b-52bd-43a9-8875-583411abc9ed
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: student_id
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9941736f-b6b3-4d32-83e7-2b07f808d7b2
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: student_name
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a0d911dd-d141-4120-82fb-0acda90558b5
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: subject
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a55cde9f-1c2f-4bd7-9cb4-6b4a6195fcff
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: STRING
+        defaultValue: ""
+        description: ""
+        name: term
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 29004003-e97f-429e-bf84-63c850e4de44
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: score
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e377c76-0cfa-40ea-bd61-c8896f5d1907
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: LOAD_TIMESTAMP
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 66b60154-b80b-4eee-8f57-2a55e0ee4950
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        name: FILE_LAST_MODIFIED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 21472606-9487-4a8d-b6de-9841ee3aa2a8
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILESIZE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42b62e3e-ac80-4af7-8739-75fb560ffa46
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKSTART
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 251731bc-1033-4241-9609-468e3bc4edd3
+          stepCounter: 6a8a0e3f-5837-465a-8f0a-67925f221c4c
+        config: {}
+        dataType: LONG
+        defaultValue: ""
+        description: ""
+        name: FILEBLOCKLENGTH
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: copy_student_xls
+        noLinkRefs: []
+  name: copy_student_xls
+  overrideSQL: false
+  schema: ""
+  sqlType: "531"
+  type: sql
+  version: 1
+type: Node
