@@ -4,7 +4,7 @@ isDisabled: false
 metadata:
   defaultStorageLocation: null
   error: null
-  nodeMetadataSpec: |+
+  nodeMetadataSpec: |-
     capitalized: Copy Into
     short: COPY
     tagColor: gray
@@ -214,13 +214,5 @@ metadata:
       dataType: BIGINT
       placement: end
       attributeName: sysblkend
-
-
-
-
-
-
-
-
 name: Copy Into
 type: NodeType

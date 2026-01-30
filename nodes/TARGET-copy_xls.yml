@@ -13,10 +13,10 @@ operation:
     filepath: /Volumes/coalesce/target_de
     forceload: false
     headerrows: "1"
-    igcorfiles: false
-    igmisfiles: false
+    igcorfiles: true
+    igmisfiles: true
     infercolumntypes: false
-    inferschema: false
+    inferschema: true
     mergeschema: false
     mulline: true
     parsehdr: true
