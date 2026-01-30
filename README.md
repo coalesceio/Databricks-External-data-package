@@ -80,6 +80,8 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 <br/>**Timestamp format**- String that defines the format of timestamp values in the data files to be loaded
 <br/>**Multi-line**-Whether the CSV records span multiple lines.<br/>**rowTag**-The row tag of the XML files to treat as a row. In the example XML `<books> <book></book>...</books>`, the appropriate value is book. This is a required option for xml.
 <br/>**rootTag**-Root tag of the XML files. For example, in `<books> <book><book>...</books>`, the appropriate value is books.<br/>**Encoding**- Specifies the character set of the source data when loading data into a table|
+|**EXCEL**|**Header Rows**- Number of header rows to skip/use for column names (default: 1)
+<br/>**Data Address**- Sheet and cell range specification (e.g., 'Sheet1'!A1:E100)|
 
 <h3 id="copy-into-copy-options"> CopyInto - Copy Options </h3>
 
