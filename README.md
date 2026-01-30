@@ -1,5 +1,11 @@
 # External Data Package
 
+## Brief Summary
+ 
+External Data Package in Databricks is used to load data from files in cloud storage or volumes into Delta tables in an incremental and scalable way.
+
+It is mainly used for batch ingestion of files.
+
 The Coalesce Databricks External Data Package includes:
 
 * [CopyInto](#CopyInto)
