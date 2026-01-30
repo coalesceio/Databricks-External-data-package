@@ -39,14 +39,20 @@
     _metadata.file_block_length AS FILEBLOCKLENGTH
     FROM  read_files('{{ns.fileloc}}',format=>'{{desiredState.config.fileType}}'
     {%-if desiredState.config.filePattern != ""%} ,pathGlobFilter => '{{desiredState.config.filePattern}}' {%-endif%}
-    {%-if desiredState.config.ignoreCorruptFiles == true %}
-      ,ignoreCorruptFiles => '{{desiredState.config.ignoreCorruptFiles}}'
+    {%-if desiredState.config.igcorfiles == true %}
+      ,ignoreCorruptFiles => '{{desiredState.config.igcorfiles}}'
     {%-endif%}
-    {%-if desiredState.config.ignoreCorruptFiles == true %}
-      ,ignoreMissingFiles => '{{desiredState.config.ignoreMissingFiles}}'
+    {%-if desiredState.config.igmisfiles == true %}
+      ,ignoreMissingFiles => '{{desiredState.config.igmisfiles}}'
     {%-endif%}
     {%-if desiredState.config.fileType == 'JSON' or desiredState.config.mulline %} ,multiline => true {%-endif%}
     {%-if desiredState.config.fileType == 'JSON' and desiredState.config.svcol %} ,singlevariantcolumn => '{{desiredState.config.svcol}}' {%-endif%}
+    {%-if desiredState.config.headerrows !="" and desiredState.config.headerrows is not none and desiredState.config.fileType == 'EXCEL'  %} 
+     ,headerRows => {{desiredState.config.headerrows}} {%-endif%}
+   {%-if desiredState.config.dataaddress !="" and desiredState.config.dataaddress is not none and desiredState.config.fileType == 'EXCEL'  %} 
+     ,dataAddress => {{desiredState.config.dataaddress}} {%-endif%}
+    {%-if desiredState.config.fileType == 'EXCEL'  %} 
+     ,schemaEvolutionMode => "none" {%-endif%}
     {%-if desiredState.config.encoding != "" and desiredState.config.encoding is not none %} ,encoding => '{{desiredState.config.encoding}}'  {%-endif%}
     {%-if desiredState.config.dtformat != "" %} ,dateformat => '{{desiredState.config.dtformat}}'  {%-endif%}
     {%-if desiredState.config.tstmpformat != "" %} ,timestampFormat => '{{desiredState.config.tstmpformat}}'  {%-endif%}

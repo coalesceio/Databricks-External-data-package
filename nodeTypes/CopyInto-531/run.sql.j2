@@ -56,6 +56,19 @@
     {%-endif%}
 
         {% set format_options = format_options + json_options %} {# Concatenate the lists #}
+        
+{%elif config.fileType == 'EXCEL'%}
+    {%set excel_options = [] %}
+
+    {% if config.headerrows != "" %}
+        {% set _ = excel_options.append("'headerRows' = '" ~config.headerrows~ "'") %}
+    {% endif %}
+
+    {% if config.dataaddress != "" %}
+        {% set _ = excel_options.append("'dataAddress' = "~config.dataaddress ~"") %}
+    {% endif %}
+
+    {% set format_options = format_options + excel_options %} {# Concatenate the lists #}
 
 {%elif config.fileType == 'XML'%}
 
@@ -68,7 +81,6 @@
     {% if config.xmlrtTag != "" %}
         {% set _ = xml_options.append("'rootTag' = '" ~config.xmlrtTag~ "'") %}
     {% endif %}
-
     
     {%-if config.dtformat != "" %} 
        {% set _ = xml_options.append("'dateformat' = '"~config.dtformat~"'")  %}
@@ -90,7 +102,7 @@
 {%if config.ignoreCorruptFiles == true %}
       {% set _ = common_opt.append("ignoreMissingFiles = '" ~config.ignoreMissingFiles~ "'") %}
 {%endif%}
-{%if config.encoding !="" and config.encoding is not none  %}
+{%if config.encoding !="" %}
       {% set _ = common_opt.append("'encoding' = '" ~config.encoding~ "'") %}
 {%endif%}
 {%if config.fileType == 'ORC'  %}
