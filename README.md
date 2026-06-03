@@ -25,18 +25,21 @@ There are four configs within the **Node Properties** group.
 
 | **Property** | **Description** |
 |-------------|-----------------|
-| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Storage Location** | Storage Location where the CopyInto table will be created |
 | **Node Type** | Name of template used to create node objects |
 | **Description** | A description of the Node's purpose |
 | **Deploy Enabled** | If TRUE the Node will be deployed or redeployed when changes are detected<br/>If FALSE the Node will not be deployed or will be dropped during redeployment |
 
-### Key points to use CopyInto Node
+### Key Points To Use CopyInto Node
 
 * CopyInto Nodes can be created by clicking **Create Node** in the browser when you want file data loaded into a single variant column in the target table.
 * You can reload data into the table by truncating it before load using the TruncateBefore option in the Node config or reload parameter.
 * Specify the path or subfolder name inside the stage where the file is located using the **Path or subfolder** config. Do not prefix or suffix `/` in the path name. For example, use `SUBFOLDER` for 1 level or `SUBFOLDER/INNERFOLDER` for 2 levels.
 
-### Use CopyInto node with InferSchema option
+### Use CopyInto Node With InferSchema Option
+
+Follow these steps when you use the CopyInto Node with the InferSchema option:
+
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
 * To choose the file format configs, see [File Format Options](#copy-into-file-format)
@@ -60,7 +63,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **TruncateBefore** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
 | **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
       
-##### Source data
+##### Source Data
 
 | **Setting** | **Description** |
 |---------|-------------|
@@ -107,7 +110,8 @@ The set of columns which has source data and file metadata information.
 ### CopyInto Deployment
 
 #### CopyInto Initial Deployment
-When deployed for the first time into an environment the Copy-into node of materialization type table will execute the below stage:
+
+When deployed for the first time into an environment, the CopyInto Node of materialization type table will execute the below stage:
 
 | Deployment Behavior | Stages Executed |
 |--|--|
@@ -117,13 +121,13 @@ When deployed for the first time into an environment the Copy-into node of mater
 
 #### Altering the CopyInto Tables
 
-There are few column or table changes like Change in table name,Dropping existing column, Alter Column data type,Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the Work Table in the target environment.
+There are few column or table changes like Change in table name, Dropping existing column, Alter Column data type, Adding a new column if made in isolation or all together will result in an ALTER statement to modify the Work Table in the target environment.
 
 The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column | Edit table description**: Alter table statement is executed to perform the alter operation.
 
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
 If the Nodes are redeployed with no changes compared to the previous deployment, then no stages are executed.
 
@@ -135,7 +139,7 @@ If the CopyInto Node is deleted from a Workspace, that Workspace is committed to
 
 ### Code
 
-### CopyInto
+#### CopyInto
 
 * [Node definition](https://github.com/coalesceio/Databricks-External-data-package/blob/main/nodeTypes/CopyInto-531/definition.yml)
 * [Create Template](https://github.com/coalesceio/Databricks-External-data-package/blob/main/nodeTypes/CopyInto-531/create.sql.j2)
