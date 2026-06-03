@@ -1,14 +1,8 @@
 # External Data Package
 
-## Brief Summary
- 
-External Data Package in Databricks is used to load data from files in cloud storage or volumes into Delta tables in an incremental and scalable way.
+The Coalesce Databricks External Data Package loads data from files in cloud storage or volumes into Delta tables in an incremental and scalable way. It is mainly used for batch ingestion of files.
 
-It is mainly used for batch ingestion of files.
-
----
-
-The Coalesce Databricks External Data Package includes:
+The package includes:
 
 * [CopyInto](#CopyInto)
 * [Code](#code)
@@ -17,7 +11,7 @@ The Coalesce Databricks External Data Package includes:
 
 ### CopyInto Node Configuration
 
-The Copy-Into node type the following configurations available:
+The CopyInto Node type has the following configurations available:
 
 * [Node Properties](#copy-into-node-properties)
 * [General Options](#copy-into-general-options)
@@ -31,21 +25,24 @@ There are four configs within the **Node Properties** group.
 
 | **Property** | **Description** |
 |-------------|-----------------|
-| **Storage Location** | Storage Location where the Materialized View will be created |
+| **Storage Location** | Storage Location where the CopyInto table will be created |
 | **Node Type** | Name of template used to create node objects |
-| **Description** | A description of the node's purpose |
-| **Deploy Enabled** | If TRUE the node will be deployed / redeployed when changes are detected<br/>If FALSE the node will not be deployed or will be dropped during redeployment |
+| **Description** | A description of the Node's purpose |
+| **Deploy Enabled** | If TRUE the Node will be deployed or redeployed when changes are detected<br/>If FALSE the Node will not be deployed or will be dropped during redeployment |
 
-### Key points to use CopyInto Node
+### Key Points To Use CopyInto Node
 
-* CopyInto node can be created by just clicking on Create node from browser if we want the data from the file to be loaded into single variant column in target table.
-* The data can be reloaded into the table by truncating the data in the table before load using the TruncateBefore option in node config or reload parameter
-* The path or subfolder name inside stage where the file is located can be specified using config 'Path or subfolder'.Do not prefix or suffix '/' in path name.Example,one level 'SUBFOLDER',two levels 'SUBFOLDER/INNERFOLDER'.
+* CopyInto Nodes can be created by clicking **Create Node** in the browser when you want file data loaded into a single variant column in the target table.
+* You can reload data into the table by truncating it before load using the TruncateBefore option in the Node config or reload parameter.
+* Specify the path or subfolder name inside the stage where the file is located using the **Path or subfolder** config. Do not prefix or suffix `/` in the path name. For example, use `SUBFOLDER` for 1 level or `SUBFOLDER/INNERFOLDER` for 2 levels.
 
-### Use CopyInto node with InferSchema option
+### Use CopyInto Node With InferSchema Option
+
+Follow these steps when you use the CopyInto Node with the InferSchema option:
+
 * Set Infer Schema toggle to true
 * Hit Create button to Infer Schema
-* To choose the file format configs,[refer link](#file-format-config-inferschema)
+* To choose the file format configs, see [File Format Options](#copy-into-file-format)
 * Click on Re-Sync Columns button
 * If all looks good, set Infer Schema button to false
 * Hit Create button to execute create table based on inferred schema
@@ -66,7 +63,7 @@ If the above works, it should be deployable as is.  Deploy will simply take the 
 | **TruncateBefore** | True / False toggle that determines whether or not a table is to be truncated before reloading <br/>- **True**: Table is truncated and Copy-Into statement is executed to reload the data into target table<br/>- **False**: Data is loaded directly into target table and no truncate action takes place. |
 | **InferSchema** | True / False toggle that determines whether or not to infer the columns of file before loading <br/>- **True**: The node is created with the inferred columns<br/>- **False**: No infer table step is executed |
       
-##### Source data
+##### Source Data
 
 | **Setting** | **Description** |
 |---------|-------------|
@@ -113,7 +110,8 @@ The set of columns which has source data and file metadata information.
 ### CopyInto Deployment
 
 #### CopyInto Initial Deployment
-When deployed for the first time into an environment the Copy-into node of materialization type table will execute the below stage:
+
+When deployed for the first time into an environment, the CopyInto Node of materialization type table will execute the below stage:
 
 | Deployment Behavior | Stages Executed |
 |--|--|
@@ -123,25 +121,25 @@ When deployed for the first time into an environment the Copy-into node of mater
 
 #### Altering the CopyInto Tables
 
-There are few column or table changes like Change in table name,Dropping existing column, Alter Column data type,Adding a new column if made in isolation or all-together will result in an ALTER statement to modify the Work Table in the target environment.
+There are few column or table changes like Change in table name, Dropping existing column, Alter Column data type, Adding a new column if made in isolation or all together will result in an ALTER statement to modify the Work Table in the target environment.
 
 The following stages are executed:
 
 * **Rename Table| Alter Column | Delete Column | Add Column | Edit table description**: Alter table statement is executed to perform the alter operation.
 
-### Redeployment with no changes 
+### Redeployment With No Changes 
 
-If the nodes are redeployed with no changes compared to previous deployment,then no stages are executed
+If the Nodes are redeployed with no changes compared to the previous deployment, then no stages are executed.
 
 ### CopyInto Undeployment
 
-If the CopyInto node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level environment then the target table in the target environment will be dropped.
+If the CopyInto Node is deleted from a Workspace, that Workspace is committed to Git and that commit deployed to a higher-level Environment, then the target table in the target Environment is dropped.
 
-* **Drop table**: Target table in Snowflake is dropped
+* **Drop table**: Target table in Databricks is dropped
 
 ### Code
 
-### CopyInto
+#### CopyInto
 
 * [Node definition](https://github.com/coalesceio/Databricks-External-data-package/blob/main/nodeTypes/CopyInto-531/definition.yml)
 * [Create Template](https://github.com/coalesceio/Databricks-External-data-package/blob/main/nodeTypes/CopyInto-531/create.sql.j2)
